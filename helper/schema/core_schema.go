@@ -237,6 +237,8 @@ func (s *Schema) coreConfigSchemaType() cty.Type {
 		// will deal with this as an additional validation step after
 		// configuration has been parsed and decoded.
 		return cty.Number
+	case TypeDynamic:
+		return cty.DynamicPseudoType
 	case TypeList, TypeSet, TypeMap:
 		var elemType cty.Type
 		switch set := s.Elem.(type) {
